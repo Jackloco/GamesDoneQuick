@@ -1,0 +1,24 @@
+
+<h2>{{theEntry.game}}</h2>
+<p>{{theEntry.time}}</p>
+<p>{{theEntry.username}}</p>
+<h2>Edit this Entry</h2>
+
+
+<form action="/entries/{{theEntry._id}}/update" method="post">
+
+<label>Time</label>
+<input type="text" name="title" value="{{theEntry.time}}">
+<br>
+
+<label>Description</label>
+<textarea name="description" cols="30" rows="10" >{{theEntry.description}}</textarea>
+<br>
+
+<label>Rating</label>
+<input type="number" name="rating" value="{{theBook.rating}}">
+<br>
+<button type="submit">Save Book</button>
+
+
+</form>

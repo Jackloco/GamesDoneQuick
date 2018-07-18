@@ -1,0 +1,35 @@
+<hr>
+<p>Game: {{theEntry.game}}</p>
+<hr>
+<p>Difficulty: {{theEntry.difficulty}}</p>
+<hr>
+<p>Console: {{theEntry.console}}</p>
+<hr>
+<p>Time: {{theEntry.time}}</p>
+<hr>
+<p>Username: {{theEntry.username}}</p>
+<hr>
+Youtube Link: <a href={{theEntry.youtubeLink}}>Video</a>
+<hr>
+<a href="/entries/{{theEntry._id}}/edit">Edit This Entry</a>
+
+
+<form action="/entries/{{theEntry._id}}/delete" method="post">
+    <button>Delete This Entry</button>
+</form>
+
+<a href="/entries/{{theEntry._id}}/reviews/new">Add a Review for This Entry</a>
+
+
+<div>
+    <h2>Reviews For This Run</h2>
+    <hr>
+    {{#each theEntry.reviews}}
+        <h4>{{this.reviewer}}</h4>
+        <p>{{this.content}}</p>
+        <form action="/reviews/{{../theEntry._id}}/reviews/delete/{{@index}}" method="post">
+            <button>Delete This Review</button>
+        </form>
+        <hr>
+    {{/each}}
+</div>

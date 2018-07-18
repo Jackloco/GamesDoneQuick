@@ -3,8 +3,9 @@ const router = express.Router();
 const Entry = require('../models/entry');
 const User = require('../models/user');
 const ensureLogin = require("connect-ensure-login");
+const passport = require("passport");
 
-
+// console.log(Entry);
 // router.use((req, res, next) => {
 //     if (req.session.currentUser) {
 //       next();
@@ -21,7 +22,7 @@ router.get('/entries', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     //     return;
     // } // this way you can use to make ONE SINGLE ROUTE private but oyu have to do it in every route that you want to restrict
     Entry.find()
-        .populate('user')
+        // populate('user')
         .then((listOfEntries) => {
             res.render('entries', {listOfEntries});
         })
@@ -120,7 +121,6 @@ router.post('/entries/:id/delete', (req, res, next) => {
 router.get('/entries/:id', (req, res, next) => {
     const id = req.params.id;
     Entry.findById(id)
-        .populate('username')
         .then((theEntry) => {
             res.render('entryDetails', {theEntry: theEntry});
         })

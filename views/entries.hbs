@@ -1,0 +1,9 @@
+{{#each listOfEntries}}
+    <div>
+
+        <p>{{this.game}} at this difficulty {{this.difficulty}} with this console {{this.console}}</p>
+        <a href="/entries/{{this._id}}">See Details</a>
+
+    </div>
+    <hr>
+{{/each}}

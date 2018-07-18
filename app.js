@@ -13,6 +13,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const flash = require("connect-flash");
+const User = require("./models/user");
 
 mongoose.Promise = Promise;
 mongoose
@@ -96,8 +97,11 @@ const index = require('./routes/index');
 app.use('/', index);
 
 // Routes
-const authRoutes = require("./routes/auth-routes");
+const authRoutes = require('./routes/authRoutes');
 app.use('/', authRoutes);
+
+const entryRoutes = require("./routes/entryRoutes");
+app.use('/', entryRoutes);
 
 
 module.exports = app;

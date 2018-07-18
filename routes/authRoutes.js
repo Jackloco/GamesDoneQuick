@@ -1,4 +1,6 @@
-// routes/auth-routes.js
+// routes/authRoutes.js
+
+const passport = require("passport");
 const express = require("express");
 const authRoutes = express.Router();
 
@@ -56,7 +58,7 @@ authRoutes.get("/login", (req, res, next) => {
 });
 
 authRoutes.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/entries",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true
