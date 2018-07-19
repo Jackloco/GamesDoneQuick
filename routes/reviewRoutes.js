@@ -48,6 +48,6 @@ reviewRouter.post('/entries/:id/reviews/delete/:reviewIndex', (req, res, next) =
             next(err);
         })
 
-})
+});
 
 module.exports = reviewRouter;

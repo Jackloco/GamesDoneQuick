@@ -103,5 +103,7 @@ app.use('/', authRoutes);
 const entryRoutes = require("./routes/entryRoutes");
 app.use('/', entryRoutes);
 
+const forumRoutes = require("./routes/forumRoutes");
+app.use('/', forumRoutes);
 
 module.exports = app;

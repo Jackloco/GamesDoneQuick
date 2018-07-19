@@ -1,43 +1,10 @@
 const mongoose = require('mongoose');
 const Entry = require('../models/entry');
+const Forum = require('../models/forum');
 const User = require('../models/user');
 
 const dbName = 'gamesdonequick';
 mongoose.connect(`mongodb://localhost/${dbName}`);
-
-
-// const jrr = {_id: new mongoose.Types.ObjectId(), name: "JRR", lastName: "Tolkien", nationality: "British", birthday: '01/03/1892'}
-// const george = {_id: new mongoose.Types.ObjectId(), name: "George", lastName: "Orwell", nationality: "British", birthday: '06/25/1903'}
-//
-// const authors = [jrr, george];
-
-
-// const books = [
-// {
-//   title: "the hobbit",
-//   description: "short people go on a quest",
-//   author: jrr._id,
-//   rating: 7
-// },
-// {
-//   title: "lord of the rings",
-//   description: "trees walk around a fight, small people grow big, dead people come back to life, etc.",
-//   author: jrr._id,
-//   rating: 10
-// },
-//   {
-//     title: "Animal Farm",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-//     author: george._id,
-//     rating: 9
-//   },
-//   {
-//     title: "1984",
-//     description: 'dystopian futuristic society where the government controls everything.  Basically Black Mirror.',
-//     author: george._id,
-//     rating: 5
-//   }
-// ]
 
 const entries = [
     {
@@ -70,6 +37,33 @@ const entries = [
 Entry.create(entries)
     .then((result) => {
         console.log(`created ${result.length} entries`);
+        mongoose.disconnect();
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+
+const forum = [
+    {
+        username: "Jeb Bush",
+        topic: "Main Character in Halo",
+        body:"Why isn't the main character in Halo me?"
+    },
+    {
+        username: "Sam Bonner",
+        topic: "wtf is this shit",
+        body: "why isn't there a speed run of Cold Waters?"
+    },
+    {
+        username: "Rabbleflaggers",
+        topic: "Is SkullGirls a possible speed run?",
+        body: "Asking for a friend..."
+    }
+];
+
+Forum.create(forum)
+    .then((result) => {
+        console.log(`created ${result.length} forum posts`);
         mongoose.disconnect();
     })
     .catch((err) => {
