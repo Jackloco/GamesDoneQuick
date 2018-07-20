@@ -1,12 +1,13 @@
 {{#each listOfForum}}
     <div>
-
         <p>Username: {{this.username}}</p>
         <p>Topic: {{this.topic}}</p>
         <p>Body: {{this.body}}</p>
-
     </div>
 
+    <form action="/forum/{{theForum._id}}/delete" method="post">
+        <button>Delete Someone Else's Post</button>
+    </form>
     <hr>
 {{/each}}
 
@@ -14,4 +15,6 @@
     <a href="/forum/new">Create a new forum</a>
     <hr>
     <a href="/entries">Back to entries</a>
+    <hr>
+    <a href="/">Home</a>
 </div>
